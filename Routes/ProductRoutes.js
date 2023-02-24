@@ -5,6 +5,7 @@ const { ProductModel } = require("../models/Products.model");
 
 const ProductRouter = Router();
 
+
 ProductRouter.get("/:id" , async(req,res)=>{
   const {id} = req.params
 try {
