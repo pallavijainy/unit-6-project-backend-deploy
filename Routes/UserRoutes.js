@@ -100,17 +100,6 @@ userRouter.get("/", async (req, res) => {
   }
 });
 
-
-userRouter.get("/profile",Authenticate, async (req, res) => {
-  const userID = req.body.userID
-  try {
-    const data = await userModel.find({"_id" : userID});
-    res.send(data);
-  } catch (error) {
-    res.send(error);
-  }
-});
-
 userRouter.patch("/resetPass" , async(req,res)=>{
   const {email,password} = req.body;
 
@@ -132,5 +121,16 @@ userRouter.patch("/resetPass" , async(req,res)=>{
 
 
 })
+
+
+userRouter.get("/profile",Authenticate, async (req, res) => {
+  const userID = req.body.userID
+  try {
+    const data = await userModel.find({"_id" : userID});
+    res.send(data);
+  } catch (error) {
+    res.send(error);
+  }
+});
 
 module.exports = { userRouter };
